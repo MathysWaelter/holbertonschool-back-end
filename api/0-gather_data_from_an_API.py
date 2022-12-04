@@ -37,7 +37,7 @@ if __name__ == "__main__":
             finaltask.append(taskdone['title'])
             TASKS = TASKS + 1
 
-    print("Employee {} is done with tasks({}/{})".format(EMPLOYEE_NAME,
+    print("Employee {} is done with tasks({}/{}):".format(EMPLOYEE_NAME,
                                                          TASKS, total))
 
     for taskfinal in finaltask:
