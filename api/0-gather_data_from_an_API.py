@@ -5,6 +5,7 @@ import json
 import requests
 import sys
 
+
 if __name__ == "__main__":
     """ALL MY VARIABLE"""
     todos = requests.get('https://jsonplaceholder.typicode.com/todos')
@@ -15,8 +16,9 @@ if __name__ == "__main__":
     usersjson = json.loads(userstxt)
     Id = sys.argv[1]
     final = []
+    total = 0
     finaltask = []
-    NUMBER_OF_DONE_TASKS = 0
+    TASKS = 0
     taskleft = 0
 
     """FOR RETRIEVE TASK_ID"""
@@ -28,14 +30,15 @@ if __name__ == "__main__":
     for value in todosjson:
         if value['userId'] == int(Id):
             final.append(value)
+            total = total + 1
 
     for taskdone in final:
         if taskdone['completed'] is True:
             finaltask.append(taskdone['title'])
-            NUMBER_OF_DONE_TASKS = NUMBER_OF_DONE_TASKS + 1
+            TASKS = TASKS + 1
 
-    print("Employee {} is done with tasks({}/20)".format(EMPLOYEE_NAME,
-                                                         NUMBER_OF_DONE_TASKS))
+    print("Employee {} is done with tasks({}/{})".format(EMPLOYEE_NAME,
+                                                         TASKS, total))
 
     for taskfinal in finaltask:
         print("\t {}".format(taskfinal))
